@@ -1,0 +1,76 @@
+<style>
+  /** @format */
+  .container {
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+
+  .container a {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 80px;
+    text-decoration: none;
+    color: rgb(56, 56, 56);
+  }
+  .btn-reset {
+    margin-top: 20px;
+    margin-left: 40px;
+    padding: 10px;
+    background: rgb(146, 148, 148);
+  }
+</style>
+<div class="container">
+  <a href="#" data-r="0" data-c="0"></a>
+  <a href="#" data-r="0" data-c="1"></a>
+  <a href="#" data-r="0" data-c="2"></a>
+
+  <a href="#" data-r="1" data-c="0"></a>
+  <a href="#" data-r="1" data-c="1"></a>
+  <a href="#" data-r="1" data-c="2"></a>
+
+  <a href="#" data-r="2" data-c="0"></a>
+  <a href="#" data-r="2" data-c="1"></a>
+  <a href="#" data-r="2" data-c="2"></a>
+</div>
+<button class="btn-reset" type="reset">reset</button>
+<script>
+  let counter = 0;
+  let container = document.querySelector(".container");
+  let elements = document.querySelectorAll(".container a");
+  let btnReset = document.querySelector(".btn-reset");
+
+  function reset() {
+    element.textContent = 0;
+    console.log("game over");
+    counter = 0;
+  }
+  for (let element of elements) {
+    element.addEventListener("click", function () {
+      if (counter > 8) {
+        element.textContent = " ";
+        console.log("game over");
+        counter = 0;
+      } else {
+        counter++;
+      }
+
+      btnReset.addEventListener("click", function () {
+        element.textContent = " ";
+        console.log("game over");
+        counter = 0;
+      });
+
+      if (counter % 2 == 0) {
+        element.textContent = "0";
+      } else {
+        element.textContent = "X";
+      }
+
+      console.log("counter:" + counter);
+    });
+  }
+</script>
