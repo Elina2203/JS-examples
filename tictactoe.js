@@ -2,25 +2,27 @@ let board = document.querySelector(".board");
 let arr_1 = [];
 let arr_2 = [];
 let count = 0;
-let restartButton = document.getElementById("restartButton");
-const winningMessageElement = document.getElementById("winningMessage");
+
+let winningMessageElement = document.getElementById("winningMessage");
 let winningMessageTextElement = document.querySelector(
   "[data-winning-message-text]"
 );
+let restartButton = document.getElementById("restartButton");
+
 for (let i = 0; i <= 8; i++) {
   let element = document.createElement("a");
   element.setAttribute("href", "#");
   element.setAttribute("data-id", i);
   board.append(element);
-  //При клике на клетку
-  element.addEventListener("click", function () {
-    if (count > 8) {
-      winningMessageElement.classList.add("show");
-      winningMessageTextElement.textContent = "DRAW!";
-      restart();
-    }
 
-    if (element.textContent != "0" && element.textContent != "X") {
+  element.addEventListener("click", function () {
+    isDraw(check);
+
+    if (
+      count < 10 &&
+      element.textContent != "0" &&
+      element.textContent != "X"
+    ) {
       count++;
       let field = element.getAttribute("data-id");
       if (count % 2 == 0) {
@@ -43,8 +45,11 @@ for (let i = 0; i <= 8; i++) {
       console.log("0:", arr_1);
       console.log("count:" + count);
     }
+
+    // isDraw();
   });
 }
+
 restartButton.addEventListener("click", restart);
 
 function restart() {
@@ -55,9 +60,9 @@ function restart() {
     element.classList.remove("added_0");
     arr_1 = [];
     arr_2 = [];
+    winningMessageElement.classList.remove("show");
   }
 
-  console.log("game over");
   count = 0;
 }
 
@@ -76,26 +81,19 @@ function check(value, winner) {
   winCombinations.forEach((combination) => {
     //одна из выигрышных комбинаций
     if (
-      value.includes(combination[0]) &&
-      value.includes(combination[1]) &&
+      value.includes(combination[0]) && //value -наши массивы arr_1 и arr_2 содержат значения из WinnerCombinations
+      value.includes(combination[1]) && //где combination одно из значений
       value.includes(combination[2])
     ) {
-      console.log(winner, ":", "is the winner");
-      // restartButton.classList.add("show");
       winningMessageElement.classList.add("show");
       winningMessageTextElement.textContent =
         winner + "   " + "You are winner!";
     }
   });
 }
-function isDraw() {
-  let elements = document.querySelectorAll(".board a");
-  for (element of elements) {
-    if (
-      element.classList.contains("added_X") ||
-      element.classList.contains("added_0")
-    ) {
-      console.log("Draw!");
-    }
+function isDraw(check) {
+  if (count >= 8) {
+    winningMessageElement.classList.add("show");
+    winningMessageTextElement.textContent = "DRAW!";
   }
 }

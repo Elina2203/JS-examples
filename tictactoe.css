@@ -1,6 +1,7 @@
 /** @format */
 .board {
   margin: auto;
+  margin-top: 350px;
   width: 400px;
   height: 400px;
   display: grid;
@@ -31,18 +32,17 @@
   font-size: 5rem;
 }
 
-.winning-message button {
-  display: none;
+#restartButton {
+  display: flex;
   margin-top: 20px;
+  margin-left: 50px;
   font-size: 3rem;
   background-color: white;
   border: 1px solid black;
   padding: 0.25em 0.5em;
   cursor: pointer;
 }
-.winning-message button .show {
-  display: flex;
-}
+
 .winning-message button:hover {
   background-color: black;
   color: white;
