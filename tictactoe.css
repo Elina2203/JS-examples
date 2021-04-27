@@ -16,17 +16,7 @@
   text-decoration: none;
   color: rgb(56, 56, 56);
 }
-.btn-reset {
-  margin-top: 20px;
-  margin-left: 40px;
-  padding: 10px;
-  background: rgb(146, 148, 148);
-}
-#print {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: dodgerblue;
-  font-size: 20px;
-}
+
 .winning-message {
   display: none;
   position: fixed;
@@ -39,23 +29,25 @@
   align-items: center;
   color: white;
   font-size: 5rem;
-  flex-direction: column;
 }
 
 .winning-message button {
+  display: none;
+  margin-top: 20px;
   font-size: 3rem;
   background-color: white;
   border: 1px solid black;
   padding: 0.25em 0.5em;
   cursor: pointer;
 }
-
+.winning-message button .show {
+  display: flex;
+}
 .winning-message button:hover {
   background-color: black;
   color: white;
   border-color: white;
 }
-
 .winning-message.show {
   display: flex;
 }
