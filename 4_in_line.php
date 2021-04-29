@@ -15,7 +15,7 @@
     .container a {
       border: 1px solid black;
       text-align: center;
-      font-size: 50px;
+      font-size: 30px;
       text-decoration: none;
       color: rgb(56, 56, 56);
     }
