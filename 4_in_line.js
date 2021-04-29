@@ -52,7 +52,8 @@ four_in_line.app.addEventListener("click", function (event) {
   }
 
   let id = Number(field.getAttribute("data-id"));
-
+  //id >= 90 по сути означает, что мы можем ставить X || 0
+  // на последнюю строку
   if (id >= 90 || four_in_line.fields[id + 10].textContent != "") {
     if (count % 2 == 0) {
       field.textContent = "x";
